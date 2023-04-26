@@ -1,1 +1,51 @@
+<header class="sticky">
+    <!-- HOME PAGE CONTAINER LINK  -->
+    <!--
+    <a [routerLink]="['./home']" class="logo">
+      <img src="../assets/images-women/lady-monster-logo.png" alt="logo" width="150" height="99">
+      <div id="home-circle">
+        <p>Take me<br><b>&nbsp;home!</b></p>
+      </div>
+    </a>
+    -->
+
+    <!-- HOME PAGE CONTAINER LINK  -->
+    <!-- EVERY LINK NEEDS A A TAG -->
+    <a [routerLink]="['./home']" class="button rounded square" routerLinkActive="active">
+        <span class="icon-home"></span>
+        Home
+    </a>
+
+    <!-- LOGIN PAGE LINK CONTAINER -->
+    <a [routerLink]="['/login']" class="button rounded square" routerLinkActive="active">
+        login
+    </a>
+
+    <!-- USERS PAGE LINK CONTAINER -->
+    <a [routerLink]="['/users']" class="button rounded square" routerLinkActive="active">
+        users
+    </a>
+
+    <!-- VENDORS PAGE LINK CONTAINER -->
+    <a [routerLink]="['/vendors']" class="button rounded square" routerLinkActive="active">
+        vendors
+    </a>
+
+    <!-- PRODUCTS PAGE LINK CONTAINER -->
+    <a [routerLink]="['/products']" class="button rounded square" routerLinkActive="active">
+        products
+    </a>
+
+    <!-- REQUESTS PAGE LINK CONTAINER -->
+    <a [routerLink]="['/requests']" class="button rounded square" routerLinkActive="active">
+        requests
+    </a>
+</header>
+
+<!--
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+  -->
+
 <p>menu works!</p>

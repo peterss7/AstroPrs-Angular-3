@@ -1,26 +1,29 @@
-<div class="card" style="width: 18rem;">
+<app-menu></app-menu>
+<div class="card" style="width: 18rem">
   <div class="card-body">
     <h5 class="card-title">Products List</h5>
-      <thead>
-        <tr>
-          <th>Part Number</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Unit</th>
-          <th>Photopath</th>
-          <th>Vendor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!--
-        <tr *ngFor="let product of products">
-          <td>{{ products.partNumber }}</td>
-          <td>{{ products.name }}</td>
-          <td>{{ products.price }}</td>
-          <td>{{ products.photopath }}</td>
-          <td>{{ products.vendor }}</td>
-        </tr>
-      -->
-      </tbody>
-    </div>
+    <thead>
+      <tr>
+        <th>Part Number</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Unit</th>
+        <th>Photopath</th>
+        <th>Vendor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--
+          <tr *ngFor="let product of products">
+            <td>{{ products.partNumber }}</td>
+            <td>{{ products.name }}</td>
+            <td>{{ products.price }}</td>
+            <td>{{ products.photopath }}</td>
+            <td>{{ products.vendor }}</td>
+          </tr>
+        -->
+    </tbody>
+  </div>
 </div>
+
+<app-footer></app-footer>
