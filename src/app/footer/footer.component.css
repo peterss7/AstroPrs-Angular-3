@@ -1,0 +1,9 @@
+.footer-container {
+  height: 3vh;
+  background-color: black;
+}
+
+p {
+  text-align: center;
+  color: var(--bs-light);
+}

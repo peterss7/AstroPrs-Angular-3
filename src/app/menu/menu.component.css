@@ -1,0 +1,49 @@
+#menu-container {
+  height: 7vh;
+  background-color: black;
+  border-bottom: 1px double var(--bs-light);
+}
+
+a {
+  color: var(--bs-cyan);
+  font-size: 1.5rem;
+}
+
+.nav-link.active {
+  color: var(--bs-yellow);
+}
+
+.dropdown-menu{
+  background-color: var(--bs-gray-dark);
+}
+
+.nav-link.dropdown-toggle:focus {
+  color: var(--bs-indigo);
+}
+
+.navbar-brand:hover{
+  color: var(--bs-primary);
+}
+
+.nav-item a:hover {
+  color: var(--bs-primary);
+}
+
+.dropdown-item {
+  color: var(--bs-light);
+}
+
+.dropdown-item:hover{
+  background-color: var(--bs-gray);
+}
+
+.dropdown-menu a:hover{
+  color: var(--bs-yellow);
+}
+
+.centered-links{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
