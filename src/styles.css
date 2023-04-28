@@ -44,6 +44,44 @@
   text-align: center;
 }
 
+
+.testing{
+  border: 1px solid yellow;
+}
+
+
+#main-header {
+  position: relative;
+  grid-row: 10/25;
+  grid-column: 25/75;
+  display: flex;
+  text-align: center;
+  font-weight: 500;
+  font-size: 6rem;
+  text-shadow: 5px 5px 10px #dde4e3;
+  color: #78cfc7;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+main{
+  position: relative;
+  grid-row: 25/75;
+  grid-column: 15/75;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+main > p {
+  padding: 5%;
+  text-align: center;
+  color: var(--bs-yellow);
+}
+
+
 p {
   color: white;
   font-family: var(--secondary-font);

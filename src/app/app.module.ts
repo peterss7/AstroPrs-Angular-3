@@ -9,6 +9,7 @@ import { HomeModule } from './home/home.module';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeContainerComponent } from './home/home-container/home-container.component';
+import { UsersModule } from './users/users.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HomeContainerComponent } from './home/home-container/home-container.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
