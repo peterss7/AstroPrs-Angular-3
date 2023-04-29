@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Vendor } from 'src/model/vendor.model';
+import { MOCK_VENDORS } from 'src/model/mock-vendors';
 
 @Component({
   selector: 'app-vendor-list',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./vendor-list.component.css']
 })
 export class VendorListComponent {
-
+  vendors: Vendor[] = MOCK_VENDORS;
 }

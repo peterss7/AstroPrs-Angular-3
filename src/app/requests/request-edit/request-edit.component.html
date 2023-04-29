@@ -1,3 +1,44 @@
-<div class="main-container">
-  <p>request-edit works!</p>
+<div class="page-container">
+  <h1 class="main-header">Edit Request</h1>
+  <div class="main-content-container form-container">
+    <div class="form-edit">
+      <div class="row">
+        <div class="input-group mb-3 col">
+          <label for="inputDescription" class="col-sm-6 col-form-label">Description</label>
+          <input type="text" class="form-control" placeholder="{{request.description}}" aria-label="Description">
+        </div>
+        <div class="input-group mb-3 col">
+          <label for="inputJustification" class="col-sm-6 col-form-label">Justification</label>
+          <input type="text" class="form-control" placeholder="{{request.justification}}" aria-label="Justification">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col">
+          <label for="inputRejectionReason" class="col-sm-6 col-form-label">Rejection Reason</label>
+          <input type="text" class="form-control" placeholder="{{request.rejectionReason}}"
+            aria-label="Rejection Reason">
+        </div>
+        <div class="input-group mb-3 col">
+          <label for="inputDeliveryMode" class="col-sm-6 col-form-label">Delivery Mode</label>
+          <input type="text" class="form-control" placeholder="{{request.deliveryMode}}" aria-label="Delivery Mode">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col">
+          <label for="inputSubmittedDate" class="col-sm-6 col-form-label">Submitted Date</label>
+          <input type="text" class="form-control" placeholder="{{request.submittedDate}}" aria-label="Submitted Date">
+        </div>
+        <div class="input-group mb-3 col">
+          <label for="inputDateNeeded" class="col-sm-6 col-form-label">Date Needed</label>
+          <input type="text" class="form-control" placeholder="{{request.dateNeeded}}" aria-label="Date Needed">
+        </div>
+      </div>
+        <div class="input-group mb-3 col">
+          <label for="inputStatus" class="col-sm-6 col-form-label">Status</label>
+          <input type="text" class="form-control" placeholder="{{request.status}}" aria-label="Status">
+        </div>
+    <div class="save-edit">
+      <button class="btn btn-outline-info" type="submit">Save</button>
+    </div>
+  </div>
 </div>

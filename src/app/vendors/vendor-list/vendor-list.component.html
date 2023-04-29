@@ -1,68 +1,47 @@
-<div class="main-container">
-  <table class="list-table table table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Id</th>
-        <th scope="col">Code</th>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">City</th>
-        <th scope="col">State</th>
-        <th scope="col">Zipcode</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>request id 1</td>
-        <td>request Code 1</td>
-        <td>request Name 1</td>
-        <td>request Address 1</td>
-        <td>request City 1</td>
-        <td>request State 1</td>
-        <td>request Zipcode 1</td>
-        <td>request Phone Number 1</td>
-        <td>request Email 1</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>request id 2</td>
-        <td>request Code 2</td>
-        <td>request Name 2</td>
-        <td>request Address 2</td>
-        <td>request City 2</td>
-        <td>request State 2</td>
-        <td>request Zipcode 2</td>
-        <td>request Phone Number 2</td>
-        <td>request Email 2</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>request id 3</td>
-        <td>request Code 3</td>
-        <td>request Name 3</td>
-        <td>request Address 3</td>
-        <td>request City 3</td>
-        <td>request State 3</td>
-        <td>request Zipcode 3</td>
-        <td>request Phone Number 3</td>
-        <td>request Email 3</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>request id 4</td>
-        <td>request Code 4</td>
-        <td>request Name 4</td>
-        <td>request Address 4</td>
-        <td>request City 4</td>
-        <td>request State 4</td>
-        <td>request Zipcode 4</td>
-        <td>request Phone Number 4</td>
-        <td>request Email 4</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="page-container">
+  <h1 class="main-header">Vendor List</h1>
+  <div class="main-content-container">
+    <table class="list-table table table-striped table-dark table-bordered border-gray table-hover align-middle">
+      <thead>
+        <tr>
+          <th scope="col">Code</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">City</th>
+          <th scope="col">State</th>
+          <th scope="col">Zipcode</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Email</th>
+          <th scope="col">Detail</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vendor of vendors">
+          <td>{{vendor.code}}</td>
+          <td>{{vendor.name}}</td>
+          <td>{{vendor.address}}</td>
+          <td>{{vendor.city}}</td>
+          <td>{{vendor.state}}</td>
+          <td>{{vendor.zip}}</td>
+          <td>{{vendor.phone}}</td>
+          <td>{{vendor.email}}</td>
+          <td>
+            <a class="icon-link icon-link-hover" href="vendor/detail/{{vendor.id}}">
+              <i class="bi bi-zoom-in"></i>
+            </a>
+          </td>
+          <td>
+            <a class="icon-link icon-link-hover"href="vendor/edit/{{vendor.id}}">
+              <i class="bi bi-pencil-square"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="button-group-create-delete">
+    <a role="button" class="btn btn-outline-info" href="vendor/create">Create Vendor</a>
+    <button type="button" class="btn btn-outline-info" href="vendor/delete">Delete Vendor</button>
+  </div>
 </div>

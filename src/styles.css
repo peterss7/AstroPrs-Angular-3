@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Cinzel Decorative');
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
 :root {
   --primary-font: 'Cinzel Decorative', serif;
+  --primary-font-sub: 'Cinzel', serif;
   --secondary-font: 'Raleway', serif;
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -31,23 +33,120 @@
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
-.main-container {
-  display: grid;
-  grid-template-columns: repeat(100, 1fr);
-  grid-template-rows: repeat(100, 1fr);
-  background-image: url('src/assets/images/bg-6.png');
-  background-size: 100% 100%;
-  background-position: center;
-  height: 90vh;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.page-container{
+  display: none;
 }
 
-.list-table{
+@media (min-width: 1400px) {
+  .page-container {
+    display: grid;
+    grid-template-columns: repeat(100, 1fr);
+    grid-template-rows: repeat(100, 1fr);
+    background-image: url('src/assets/images/bg-6.png');
+    background-size: 100% 100%;
+    background-position: center;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.main-content-container {
   grid-row: 25/75;
   grid-column: 25/75;
 }
+
+.button-save-create {
+  grid-row: 75;
+  grid-column: 50;
+}
+
+.form-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  align-items: center;
+  justify-content: center;
+  border: 10px double var(--bs-purple);
+  background-color: #0D6EFD66;
+}
+
+.form-create-product {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  align-items: center;
+  justify-content: center;
+  border: 10px double var(--bs-purple);
+  background-color: #0D6EFD66;
+}
+
+#form-user-container{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  align-items: center;
+  justify-content: center;
+  border: 10px double var(--bs-purple);
+  background-color: #0D6EFD66;
+}
+
+#form-edit-user{
+  grid-column: 5/95;
+  grid-row: 15/75;
+}
+
+#form-edit-product{
+  grid-column: 5/95;
+  grid-row: 15/75;
+}
+
+.form-edit{
+  grid-column: 1/95;
+  grid-row: 15/75;
+}
+
+
+.form-create {
+  grid-column: 5/95;
+  grid-row: 15/75;
+}
+
+#save-edit-user {
+  grid-row: 75;
+  grid-column: 50;
+}
+
+.save-edit {
+  grid-row: 75;
+  grid-column: 50;
+}
+
+#form-create-product{
+  grid-column: 5/95;
+  grid-row: 15/75;
+}
+
+#table-list-product{
+  grid-row: 1/90;
+  grid-column: 5/95;
+}
+
+
+
 
 .detail-edit-bar{
   position: relative;
@@ -70,7 +169,7 @@
 }
 
 
-#main-header {
+.main-header {
   position: relative;
   grid-row: 10/25;
   grid-column: 25/75;
@@ -85,26 +184,106 @@
   overflow: hidden;
   height: 100%;
   width: 100%;
+  font-variant: small-caps;
 }
-main{
-  position: relative;
-  grid-row: 25/75;
-  grid-column: 15/75;
-  height: 100%;
-  width: 100%;
+
+.button-save-create {
+  grid-row: 75;
+  grid-column: 50;
+}
+
+.button-group-create-delete {
+  grid-row: 75/85;
+  grid-column: 25/75;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button-group{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#button-group-detail-product{
+  grid-row: 75/85;
+  grid-column: 25/75;
+}
+
+#button-group-detail-user{
+  grid-row: 75/85;
+  grid-column: 25/75;
+}
+
+#button-group-detail-vendor{
+  grid-row: 75/85;
+  grid-column: 25/75;
+}
+
+.button-group-detail{
+  grid-row: 75/85;
+  grid-column: 25/75;
+}
+
+.card-detail-container {
+  display: flex;
   overflow: hidden;
+  justify-content: center;
+  border: 1px double var(--bs-yellow);
 }
 
-main > p {
-  padding: 5%;
-  text-align: center;
+.label-detail {
+  text-align: right;
+}
+
+.col-detail{
+  text-align: left;
+}
+
+.card-detail{
+  grid-row: 25/75;
+  grid-column: 25/75;
+  background-color: var(--bs-dark);
+}
+
+#card-detail-product{
+  grid-row: 25/75;
+  grid-column: 25/75;
+  background-color: var(--bs-dark);
+}
+
+#card-detail-user{
+  grid-row: 25/75;
+  grid-column: 25/75;
+  background-color: var(--bs-dark);
+}
+
+#card-detail-vendor{
+  grid-row: 25/75;
+  grid-column: 25/75;
+  background-color: var(--bs-dark);
+}
+
+label {
   color: var(--bs-yellow);
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
 }
 
+button{
+  font-family: var(--secondary-font);
+  font-weight: 600;
+}
 
 p {
   color: white;
   font-family: var(--secondary-font);
+  font-size: 1.5rem;
+}
+
+div {
+  color: white;
+  font-family: var(--secondary-font);
+  font-size: 1rem;
 }
 
 h1{
@@ -114,4 +293,22 @@ h1{
 a {
   font-family: var(--secondary-font);
 }
+
+.list-group > li {
+  background-color: var(--bs-dark);
+  color: var(--bs-yellow);
+}
+
+.card-body > ul {
+  text-align: left;
+}
+
+.card-body > h5 {
+  font-variant: small-caps;
+  font-family: var(--primary-font-sub);
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--bs-primary);
+}
+
 

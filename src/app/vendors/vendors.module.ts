@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { VendorListComponent } from './vendor-list/vendor-list.component';
 
-import { VendorsRoutingModule } from './vendors-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    VendorListComponent
+  ],
   imports: [
-    CommonModule,
-    VendorsRoutingModule
+    CommonModule
+  ],
+  exports: [
+    VendorListComponent
   ]
+
 })
 export class VendorsModule { }

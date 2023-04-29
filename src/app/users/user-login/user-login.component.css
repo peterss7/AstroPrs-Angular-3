@@ -1,14 +1,3 @@
-label {
-  color: var(--bs-yellow);
-  font-family: var(--secondary-font);
-  font-size: 1.5rem;
-}
-
-button{
-  font-family: var(--secondary-font);
-  font-weight: 600;
-}
-
 #main-login{
   position: relative;
   grid-row: 25/75;

@@ -1,0 +1,23 @@
+#form-vendor-container{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  align-items: center;
+  justify-content: center;
+  border: 10px double var(--bs-purple);
+  background-color: #0D6EFD66;
+}
+
+#form-vendor{
+  grid-column: 5/95;
+  grid-row: 15/75;
+}
+
+#save-edit-vendor {
+  grid-row: 85;
+  grid-column: 50;
+}

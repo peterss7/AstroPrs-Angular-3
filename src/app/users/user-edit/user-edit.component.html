@@ -1,3 +1,40 @@
-<div class="main-container">
-  <p>user-edit works!</p>
+<div class="page-container">
+  <h1 class="main-header">Edit User</h1>
+  <div id="form-user-container" class="main-content-container">
+    <div id="form-edit-user">
+      <div class="row">
+        <div class="input-group mb-3 col">
+          <label for="inputFirstName" class="col-sm-6 col-form-label">First Name</label>
+          <input type="text" class="form-control" placeholder="{{user.firstname}}" aria-label="FirstName">
+        </div>
+        <div class="input-group mb-3 col">
+          <label for="inputLastName" class="col-sm-6 col-form-label">Last Name</label>
+          <input type="text" class="form-control" placeholder="{{user.lastname}}" aria-label="LastName">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col">
+          <label for="inputPhone" class="col-sm-6 col-form-label">Phone Number</label>
+          <input type="text" class="form-control" placeholder="{{user.phone}}" aria-label="Phone">
+        </div>
+        <div class="input-group mb-3 col">
+          <label for="inputEmail" class="col-sm-6 col-form-label">Email</label>
+          <input type="text" class="form-control" placeholder="{{user.email}}" aria-label="Email">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col">
+          <label for="inputUsername" class="col-sm-6 col-form-label">Username</label>
+          <input type="text" class="form-control" placeholder="{{user.username}}" aria-label="Username">
+        </div>
+        <div class="input-group mb-3 col">
+          <label for="inputPassword" class="col-sm-6 col-form-label">Password</label>
+          <input type="text" class="form-control" placeholder="{{user.password}}" aria-label="Password">
+        </div>
+      </div>
+    </div>
+    <div id="save-edit-user">
+      <button class="btn btn-outline-info" type="submit">Save</button>
+    </div>
+  </div>
 </div>

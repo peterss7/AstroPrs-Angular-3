@@ -23,35 +23,30 @@ import { VendorCreateComponent } from './vendors/vendor-create/vendor-create.com
 import { VendorDetailComponent } from './vendors/vendor-detail/vendor-detail.component';
 import { VendorEditComponent } from './vendors/vendor-edit/vendor-edit.component';
 import { VendorListComponent } from './vendors/vendor-list/vendor-list.component';
-import { HomeContainerComponent } from './home/home-container/home-container.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeContainerComponent},
-  { path: 'products/create', component: ProductCreateComponent},
-  { path: 'products/detail/:id', component: ProductDetailComponent},
-  { path: 'products/edit/:id', component: ProductEditComponent},
-  { path: 'products/list', component: ProductListComponent},
-  { path: 'requests/create', component: RequestCreateComponent},
-  { path: 'requests/detail/:id', component: RequestDetailComponent},
-  { path: 'requests/edit/:id', component: RequestEditComponent},
-  { path: 'requests/list', component: RequestListComponent},
-  { path: 'requests/review', component: RequestReviewComponent},
-  { path: 'requests/review-detail/:id', component: ReviewDetailComponent},
-  { path: 'users/create', component: UserCreateComponent},
-  { path: 'users/detail/:id', component: UserDetailComponent},
-  { path: 'users/edit/:id', component: UserEditComponent},
-  { path: 'users/list', component: UserListComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'product/create', component: ProductCreateComponent},
+  { path: 'product/detail/:id', component: ProductDetailComponent},
+  { path: 'product/edit/:id', component: ProductEditComponent},
+  { path: 'product/list', component: ProductListComponent},
+  { path: 'request/create', component: RequestCreateComponent},
+  { path: 'request/detail/:id', component: RequestDetailComponent},
+  { path: 'request/edit/:id', component: RequestEditComponent},
+  { path: 'request/list', component: RequestListComponent},
+  { path: 'request/review', component: RequestReviewComponent},
+  { path: 'request/review-detail/:id', component: ReviewDetailComponent},
+  { path: 'user/create', component: UserCreateComponent},
+  { path: 'user/detail/:id', component: UserDetailComponent},
+  { path: 'user/edit/:id', component: UserEditComponent},
+  { path: 'user/list', component: UserListComponent},
   { path: 'user/login', component: UserLoginComponent},
-  { path: 'vendors/create', component: VendorCreateComponent},
-  { path: 'vendors/detail/:id', component: VendorDetailComponent},
-  { path: 'vendors/edit/:id', component: VendorEditComponent},
-  { path: 'vendors/list', component: VendorListComponent},
-  { path: '**', component: HomeContainerComponent}
-
-
-
-
-
+  { path: 'vendor/create', component: VendorCreateComponent},
+  { path: 'vendor/detail/:id', component: VendorDetailComponent},
+  { path: 'vendor/edit/:id', component: VendorEditComponent},
+  { path: 'vendor/list', component: VendorListComponent},
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({

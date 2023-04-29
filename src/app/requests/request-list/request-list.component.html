@@ -1,8 +1,8 @@
-<div class="main-container">
-  <table class="list-table table table-dark table-striped">
+<div class="page-container">
+  <h1 class="main-header">Request List</h1>
+  <table style="margin-top: 10%;" class="main-content-container list-table table table-dark table-striped">
     <thead>
       <tr>
-        <th scope="col"></th>
         <th scope="col">Id</th>
         <th scope="col">Description</th>
         <th scope="col">Justification</th>
@@ -11,58 +11,35 @@
         <th scope="col">Delivery Date</th>
         <th scope="col">Delivery Mode</th>
         <th scope="col">Status</th>
-        <th scope="col">Total</th>
+        <th scope="col">Detail</th>
+        <th scope="col">Edit</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>request id 1</td>
-        <td>request description 1</td>
-        <td>request justification 1</td>
-        <td>request submitted date 1</td>
-        <td>request date needed 1</td>
-        <td>request delivery date 1</td>
-        <td>request delivery mode 1</td>
-        <td>request status 1</td>
-        <td>request total 1</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>request id 2</td>
-        <td>request description 2</td>
-        <td>request justification 2</td>
-        <td>request submitted date 2</td>
-        <td>request date needed 2</td>
-        <td>request delivery date 2</td>
-        <td>request delivery mode 2</td>
-        <td>request status 2</td>
-        <td>request total 2</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>request id 3</td>
-        <td>request description 3</td>
-        <td>request justification 3</td>
-        <td>request submitted date 3</td>
-        <td>request date needed 3</td>
-        <td>request delivery date 3</td>
-        <td>request delivery mode 3</td>
-        <td>request status 3</td>
-        <td>request total 3</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>request id 4</td>
-        <td>request description 4</td>
-        <td>request justification 4</td>
-        <td>request submitted date 4</td>
-        <td>request date needed 4</td>
-        <td>request delivery date 4</td>
-        <td>request delivery mode 4</td>
-        <td>request status 4</td>
-        <td>request total 4</td>
+      <tr *ngFor="let request of requests">
+        <td>{{request.id}}</td>
+        <td>{{request.description}}</td>
+        <td>{{request.justification}}</td>
+        <td>{{request.submittedDate}}</td>
+        <td>{{request.dateNeeded}}</td>
+        <td>{{request.deliveryMode}}</td>
+        <td>{{request.status}}</td>
+        <td>{{request.userId}}</td>
+        <td>
+          <a class="icon-link icon-link-hover" href="request/detail/{{request.id}}">
+            <i class="bi bi-zoom-in"></i>
+          </a>
+        </td>
+        <td>
+          <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="request/edit/{{request.id}}">
+            <i class="bi bi-pencil-square"></i>
+          </a>
+        </td>
       </tr>
     </tbody>
   </table>
+  <div style="margin-top: 10%;" class="button-group-create-delete">
+    <a role="button" class="btn btn-outline-info" href="request/create">Create Request</a>
+    <button type="button" class="btn btn-outline-info" href="request/delete">Delete Request</button>
+  </div>
 </div>

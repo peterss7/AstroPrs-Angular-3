@@ -9,6 +9,5 @@ export class User {
     public email: string,
     public isReviewer: boolean,
     public isAdmin: boolean,
-    public editing: boolean
   ) {}
 }

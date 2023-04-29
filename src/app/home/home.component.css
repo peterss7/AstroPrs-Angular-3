@@ -1,0 +1,12 @@
+#main-content-container-home{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#main-content-container-home > p {
+  padding: 5%;
+  text-align: center;
+  color: var(--bs-yellow);
+}
