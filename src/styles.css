@@ -44,6 +44,26 @@
   text-align: center;
 }
 
+.list-table{
+  grid-row: 25/75;
+  grid-column: 25/75;
+}
+
+.detail-edit-bar{
+  position: relative;
+  grid-row:23/25;
+  grid-column: 25/75;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.detail-edit-icon{
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 9vh;
+}
 
 .testing{
   border: 1px solid yellow;
