@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from 'src/model/product.model';
-import { MOCK_PRODUCTS } from 'src/model/mock-products';
+
 
 @Component({
   selector: 'app-product-edit',
@@ -8,7 +8,7 @@ import { MOCK_PRODUCTS } from 'src/model/mock-products';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent {
-  product: Product = MOCK_PRODUCTS[0];
+
 
   constructor() {}
 

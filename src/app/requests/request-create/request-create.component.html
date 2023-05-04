@@ -1,24 +1,37 @@
 <div class="page-container">
   <h1 class="main-header">Create Request</h1>
-  <div class="main-content-container form-container">
+  <div class="main-content-container form-container" style="overflow: visible;">
     <div class="form-create">
       <div class="row">
+        <div class="input-group mb-3 col">
+          <label for="inputDate" class="col-sm-6 col-form-label">Date</label>
+          <input type="date" class="form-control" placeholder="Date" aria-label="Date">
+        </div>
         <div class="input-group mb-3 col">
           <label for="inputDescription" class="col-sm-6 col-form-label">Description</label>
           <input type="text" class="form-control" placeholder="Description" aria-label="Description">
         </div>
+      </div>
+      <div class="row">
         <div class="input-group mb-3 col">
           <label for="inputJustification" class="col-sm-6 col-form-label">Justification</label>
           <input type="text" class="form-control" placeholder="Justification" aria-label="Justification">
         </div>
-        <div class="input-group mb-3 col">
-          <label for="inputDeliveryMode" class="col-sm-6 col-form-label">Delivery Mode</label>
-          <input type="text" class="form-control" placeholder="Delivery Mode" aria-label="DeliveryMode">
+        <div class="input-group mb-3 col delivery-dropdown">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Delivery Mode
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" *ngFor="let mode of deliveryModes">{{ mode }}</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-    <div class="button-save-create">
-      <button class="btn btn-outline-info" type="submit">Save</button>
-    </div>
   </div>
+  <div class="button-save-create">
+    <button class="btn btn-outline-info" type="submit">Save</button>
+  </div>
+
 </div>

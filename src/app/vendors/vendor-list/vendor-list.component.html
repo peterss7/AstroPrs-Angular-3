@@ -1,47 +1,50 @@
-<div class="page-container">
+<div class="page-container" style="overflow: hidden; height: fit-content;">
   <h1 class="main-header">Vendor List</h1>
-  <div class="main-content-container">
-    <table class="list-table table table-striped table-dark table-bordered border-gray table-hover align-middle">
-      <thead>
-        <tr>
-          <th scope="col">Code</th>
-          <th scope="col">Name</th>
-          <th scope="col">Address</th>
-          <th scope="col">City</th>
-          <th scope="col">State</th>
-          <th scope="col">Zipcode</th>
-          <th scope="col">Phone Number</th>
-          <th scope="col">Email</th>
-          <th scope="col">Detail</th>
-          <th scope="col">Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let vendor of vendors">
-          <td>{{vendor.code}}</td>
-          <td>{{vendor.name}}</td>
-          <td>{{vendor.address}}</td>
-          <td>{{vendor.city}}</td>
-          <td>{{vendor.state}}</td>
-          <td>{{vendor.zip}}</td>
-          <td>{{vendor.phone}}</td>
-          <td>{{vendor.email}}</td>
-          <td>
-            <a class="icon-link icon-link-hover" href="vendor/detail/{{vendor.id}}">
-              <i class="bi bi-zoom-in"></i>
-            </a>
-          </td>
-          <td>
-            <a class="icon-link icon-link-hover"href="vendor/edit/{{vendor.id}}">
-              <i class="bi bi-pencil-square"></i>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="button-group-create-delete">
+  <div id="container-list-vendor">
+
+
+  <table class=" table table-striped table-dark table-bordered border-gray table-hover align-middle"
+    id="table-list-vendor">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Zipcode</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Email</th>
+        <th scope="col">Detail</th>
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vendor of vendors">
+        <td>{{vendor.code}}</td>
+        <td>{{vendor.name}}</td>
+        <td>{{vendor.address}}</td>
+        <td>{{vendor.city}}</td>
+        <td>{{vendor.state}}</td>
+        <td>{{vendor.zip}}</td>
+        <td>{{vendor.phone}}</td>
+        <td>{{vendor.email}}</td>
+        <td>
+          <a class="icon-link icon-link-hover" href="vendor/detail/{{vendor.id}}">
+            <i class="bi bi-zoom-in"></i>
+          </a>
+        </td>
+        <td>
+          <a class="icon-link icon-link-hover" href="vendor/edit/{{vendor.id}}">
+            <i class="bi bi-pencil-square"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-group-create-delete" id="buttons-list-vendor">
     <a role="button" class="btn btn-outline-info" href="vendor/create">Create Vendor</a>
     <button type="button" class="btn btn-outline-info" href="vendor/delete">Delete Vendor</button>
   </div>
+</div>
 </div>

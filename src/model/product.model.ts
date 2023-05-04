@@ -1,3 +1,5 @@
+import { Vendor } from "./vendor.model";
+
 export class Product {
   constructor(
     public id: number,
@@ -6,16 +8,6 @@ export class Product {
     public price: number,
     public unit: string,
     public photopath: string,
-    public vendor: {
-      id: number;
-      name: string;
-      code: string;
-      address: string;
-      city: string;
-      state: string;
-      zip: string;
-      phone: string;
-      email: string;
-    },
+    public vendor: Vendor,
   ) {}
 }

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { MOCK_VENDORS } from 'src/model/mock-vendors';
+import { Component, OnInit } from '@angular/core';
 import { Vendor } from 'src/model/vendor.model';
+import { VendorService } from 'src/app/services/vendor.service';
 
 @Component({
   selector: 'app-vendor-create',
@@ -8,9 +8,18 @@ import { Vendor } from 'src/model/vendor.model';
   styleUrls: ['./vendor-create.component.css']
 })
 export class VendorCreateComponent {
-  vendor: Vendor = MOCK_VENDORS[0];
 
-  constructor() {}
+  pageTitle: string = "Vendors List"
+  vendors: Vendor[] = [];
 
-  ngOnInit() {}
+  constructor(
+    private vendorService: VendorService) {}
+
+  ngOnInit() {
+    // subscribe to the list of vendors we get from the get request
+    this.vendorService.list().subscribe(jsonResponse => {
+      // add the data inside the returned JsonResponse to the array of vendors
+      this.vendors = jsonResponse as Vendor[];
+    });
+  }
 }

@@ -5,36 +5,38 @@
       <div class="row">
         <div class="input-group mb-3 col">
           <label for="inputFirstName" class="col-sm-6 col-form-label">First Name</label>
-          <input type="text" class="form-control" placeholder="{{user.firstname}}" aria-label="FirstName">
+          <input type="text" class="form-control" placeholder="{{targetUser.firstname}}" aria-label="FirstName">
         </div>
         <div class="input-group mb-3 col">
           <label for="inputLastName" class="col-sm-6 col-form-label">Last Name</label>
-          <input type="text" class="form-control" placeholder="{{user.lastname}}" aria-label="LastName">
+          <input type="text" class="form-control" placeholder="{{targetUser.lastname}}" aria-label="LastName">
         </div>
       </div>
       <div class="row">
         <div class="input-group mb-3 col">
           <label for="inputPhone" class="col-sm-6 col-form-label">Phone Number</label>
-          <input type="text" class="form-control" placeholder="{{user.phone}}" aria-label="Phone">
+          <input type="text" class="form-control" placeholder="{{targetUser.phone}}" aria-label="Phone">
         </div>
         <div class="input-group mb-3 col">
           <label for="inputEmail" class="col-sm-6 col-form-label">Email</label>
-          <input type="text" class="form-control" placeholder="{{user.email}}" aria-label="Email">
+          <input type="text" class="form-control" placeholder="{{targetUser.email}}" aria-label="Email">
         </div>
       </div>
       <div class="row">
         <div class="input-group mb-3 col">
           <label for="inputUsername" class="col-sm-6 col-form-label">Username</label>
-          <input type="text" class="form-control" placeholder="{{user.username}}" aria-label="Username">
+          <input type="text" class="form-control" placeholder="{{targetUser.username}}" aria-label="Username">
         </div>
-        <div class="input-group mb-3 col">
+        <div class="input-group mb-2 col">
           <label for="inputPassword" class="col-sm-6 col-form-label">Password</label>
-          <input type="text" class="form-control" placeholder="{{user.password}}" aria-label="Password">
+          <input type="password" class="form-control" id="inputPassword" aria-label="Password">
+          <span class="form-text" style="color: aliceblue; width: 100%; text-align:center; text-align: right;">
+            Must contain: capital letter, special character, number(s) - and less than 30 chars ... and NO EMOJIS  <b>>:(</b>          </span>
         </div>
       </div>
     </div>
     <div id="save-edit-user">
-      <button class="btn btn-outline-info" type="submit">Save</button>
+      <button class="btn btn-outline-info" type="submit" (click)="onEditClick($event)">Save</button>
     </div>
   </div>
 </div>

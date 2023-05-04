@@ -35,10 +35,12 @@
 
 .page-container{
   display: none;
+
 }
 
 @media (min-width: 1400px) {
   .page-container {
+    background-color: black;
     display: grid;
     grid-template-columns: repeat(100, 1fr);
     grid-template-rows: repeat(100, 1fr);
@@ -55,6 +57,7 @@
 .main-content-container {
   grid-row: 25/75;
   grid-column: 25/75;
+  background-color: black;
 }
 
 .button-save-create {
@@ -145,6 +148,14 @@
   grid-column: 5/95;
 }
 
+#container-list-vendor{
+  grid-row: 20/95;
+  grid-column: 5/95;
+
+}
+
+
+
 
 
 
@@ -224,6 +235,19 @@
   grid-column: 25/75;
 }
 
+.detail-check {
+  position: relative;
+  width: 0px;
+}
+
+.detail-card-content {
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  height: 30vh;
+
+}
+
 .card-detail-container {
   display: flex;
   overflow: hidden;
@@ -267,6 +291,84 @@ label {
   color: var(--bs-yellow);
   font-family: var(--secondary-font);
   font-size: 1.5rem;
+}
+
+.check-label {
+  color: var(--bs-yellow);
+  font-family: var(--secondary-font);
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: left;
+}
+
+.detail-check {
+  width: 15%;
+  display: inline-block;
+  justify-content: center;
+}
+
+#form-create-user-container{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  align-items: center;
+  justify-content: center;
+  border: 10px double var(--bs-purple);
+  background-color: #0D6EFD66;
+}
+
+#form-create-user{
+  grid-column: 5/95;
+  grid-row: 15/75;
+}
+
+#save-button {
+  grid-row: 75;
+  grid-column: 50;
+}
+
+#form-create-vendor-container{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  align-items: center;
+  justify-content: center;
+  border: 10px double var(--bs-purple);
+  background-color: #0D6EFD66;
+}
+
+#form-create-vendor{
+  grid-column: 5/95;
+  grid-row: 15/75;
+}
+
+#save-button-vendor-create {
+  grid-row: 75;
+  grid-column: 50;
+}
+
+
+
+.check-style{
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-self: center;
+
+
+}
+
+.delivery-dropdown {
+  position: relative;
+  justify-content: center;
 }
 
 button{

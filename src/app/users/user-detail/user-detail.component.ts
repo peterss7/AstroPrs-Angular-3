@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MOCK_USERS } from 'src/model/mock-users';
 import { User } from 'src/model/user.model';
+import { UserService } from 'src/app/services/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -10,10 +11,17 @@ import { User } from 'src/model/user.model';
 })
 export class UserDetailComponent {
 
-  user: User = MOCK_USERS[0];
+  user: User = new User();
+  id: number = 0;
 
-  constructor() {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe(parms => this.id = parms['id']);
+    this.userService.get(this.id).subscribe(u => this.user = u as User);
+  }
 
 }

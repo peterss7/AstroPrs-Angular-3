@@ -12,8 +12,6 @@
             <div class="d-flex justify-content-start  col" style="align-items: center;">
               {{user.firstname}}
             </div>
-          </div>
-          <div class="row">
             <div class="d-flex justify-content-end col">
               <label for="userLastName">Last Name: </label>
             </div>
@@ -28,8 +26,6 @@
             <div class="d-flex justify-content-start  col" style="align-items: center;">
               {{user.phone}}
             </div>
-          </div>
-          <div class="row">
             <div class="d-flex justify-content-end col ">
               <label for="userEmail">Email:</label>
             </div>
@@ -39,18 +35,24 @@
           </div>
           <div class="row">
             <div class="d-flex justify-content-end col ">
-              <label for="userUsername">Username: </label>
+              <label for="userUsername">Username:</label>
             </div>
             <div class="d-flex justify-content-start  col" style="align-items: center;">
               {{user.username}}
             </div>
           </div>
-          <div class="row">
-            <div class="d-flex justify-content-end col ">
-              <label for="userName">Password:</label>
+          <div class="row detail-check">
+            <div class="form-check">
+              <input class="form-check-input check-style" type="checkbox" [checked]="user.isAdmin" value="" id="adminCheck" disabled>
+              <label class="form-check-label check-label" for="adminCheck">
+                Admin
+              </label>
             </div>
-            <div class="d-flex justify-content-start  col" style="align-items: center;">
-              {{user.password}}
+            <div class="form-check">
+              <input class="form-check-input check-style" type="checkbox" [checked]="user.isReviewer" value="" id="reviwerCheck" disabled>
+              <label class="form-check-label check-label" for="reviewerCheck">
+                Reviewer
+              </label>
             </div>
           </div>
         </div>
