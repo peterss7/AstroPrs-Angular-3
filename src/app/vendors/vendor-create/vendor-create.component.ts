@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Vendor } from 'src/model/vendor.model';
-import { VendorService } from 'src/app/services/vendor.service';
+import { Router } from '@angular/router';
+import { Vendor } from 'src/app/model/vendor.model';
+import { AuthService } from 'src/app/service/auth.service';
+import { VendorService } from 'src/app/service/vendor.service';
 
 @Component({
   selector: 'app-vendor-create',
@@ -13,13 +15,20 @@ export class VendorCreateComponent {
   vendors: Vendor[] = [];
 
   constructor(
-    private vendorService: VendorService) {}
+    private vendorService: VendorService,
+    private router: Router,
+    private authService: AuthService) {}
 
   ngOnInit() {
-    // subscribe to the list of vendors we get from the get request
-    this.vendorService.list().subscribe(jsonResponse => {
-      // add the data inside the returned JsonResponse to the array of vendors
-      this.vendors = jsonResponse as Vendor[];
+
+    const user = this.authService.getAuthorizedUser();
+
+    if (!user) {
+      this.router.navigate(['user/login']);
+    }
+
+    this.vendorService.list().subscribe(jr => {
+      this.vendors = jr as Vendor[];
     });
   }
 }

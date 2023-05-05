@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Vendor } from 'src/model/vendor.model';
+import { Router } from '@angular/router';
+import { Vendor } from 'src/app/model/vendor.model';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-vendor-edit',
@@ -9,7 +11,16 @@ import { Vendor } from 'src/model/vendor.model';
 export class VendorEditComponent {
 
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const isAuthenticated = this.authService.getIsAuthenticated();
+
+    if(!isAuthenticated){
+      this.router.navigate(['user/login']);
+    }
+  }
 }

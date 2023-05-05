@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
-import { Product } from "src/model/product.model";
+import { Router } from "@angular/router";
+import { Product } from "src/app/model/product.model";
+import { AuthService } from "src/app/service/auth.service";
 
 
 @Component({
@@ -10,7 +12,18 @@ import { Product } from "src/model/product.model";
 export class ProductListComponent {
 
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit(){
+    const user = this.authService.getAuthorizedUser();
+
+    if(!user){
+      this.router.navigate(['user/login']);
+    }
+
+  }
+
 }

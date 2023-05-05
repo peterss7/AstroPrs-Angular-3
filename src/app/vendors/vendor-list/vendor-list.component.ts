@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Vendor } from 'src/model/vendor.model';
-import { VendorService } from 'src/app/services/vendor.service';
+import { Vendor } from 'src/app/model/vendor.model';
+import { VendorService } from 'src/app/service/vendor.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 
 @Component({
@@ -20,11 +21,17 @@ export class VendorListComponent implements OnInit{
   constructor(
     private vendorService: VendorService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private authService: AuthService) { }
 
   ngOnInit() {
 
-    // get the id from the url
+    const isAuthenticated = this.authService.getIsAuthenticated();
+
+    if(!isAuthenticated){
+      this.router.navigate(['user/login']);
+    }
+
     this.route.params.subscribe(params => this.id = params['id']);
     this.vendorService.get(this.id).subscribe(v => this.vendor = v as Vendor);
 

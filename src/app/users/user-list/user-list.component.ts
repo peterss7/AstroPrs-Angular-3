@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from 'src/model/user.model';
-import { UserService } from 'src/app/services/user.service';
+import {
+  Component, OnInit, Output,
+  EventEmitter
+} from '@angular/core';
+import { ListTableComponent } from 'src/app/shared/list-table/list-table.component';
+import { User } from 'src/app/model/user.model';
+import { UserService } from 'src/app/service/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 
 @Component({
@@ -12,22 +17,31 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class UserListComponent implements OnInit {
 
   pageTitle: string = "User Detail";
-  user: User = new User();
-  id: number = 0;
 
+  visibleUsers: User[] = [];
   users: User[] = [];
+  startIndex: number = 1;
+  endIndex: number = 10;
+  loading = true;
 
   constructor(
     private userService: UserService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.id = params['id']);
-    this.userService.get(this.id).subscribe(u => this.user = u as User);
 
-    this.userService.list().subscribe((users) => {
-      this.users = users.slice(0,8);
+    const user = this.authService.getAuthorizedUser();
+
+    if (!user) {
+      this.router.navigate(['user/login']);
+    }
+
+    this.userService.list().subscribe(u => {
+      this.users = u;
+      this.visibleUsers = this.users.slice(this.startIndex, this.endIndex);
+      this.loading = false;
     });
   }
 }

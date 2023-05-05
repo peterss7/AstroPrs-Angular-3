@@ -1,7 +1,8 @@
-import { VendorService } from 'src/app/services/vendor.service';
+import { VendorService } from 'src/app/service/vendor.service';
 import { Component, OnInit } from '@angular/core';
-import { Vendor } from 'src/model/vendor.model';
+import { Vendor } from 'src/app/model/vendor.model';
 import {Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-vendor-detail',
@@ -17,9 +18,17 @@ export class VendorDetailComponent implements OnInit{
   constructor(
     private vendorService: VendorService,
     private router: Router,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,
+    private authService: AuthService) {}
 
   ngOnInit() {
+
+    const isAuthenticated = this.authService.getIsAuthenticated();
+
+    if (!isAuthenticated){
+      this.router.navigate(['user/login']);
+    }
+
     this.route.params.subscribe(parms => this.id = parms['id']);
     this.vendorService.get(this.id).subscribe(v => this.vendor = v as Vendor);
   }

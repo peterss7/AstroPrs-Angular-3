@@ -23,11 +23,13 @@ import { VendorCreateComponent } from './vendors/vendor-create/vendor-create.com
 import { VendorDetailComponent } from './vendors/vendor-detail/vendor-detail.component';
 import { VendorEditComponent } from './vendors/vendor-edit/vendor-edit.component';
 import { VendorListComponent } from './vendors/vendor-list/vendor-list.component';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './guard/authguard.service';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'product/create', component: ProductCreateComponent},
+  { path: 'home', component: HomeComponent,canActivate: [AuthGuard]},
+  { path: 'product/create', component: ProductCreateComponent, canActivate: [AuthGuard]},
   { path: 'product/detail/:id', component: ProductDetailComponent},
   { path: 'product/edit/:id', component: ProductEditComponent},
   { path: 'product/list', component: ProductListComponent},
@@ -46,7 +48,8 @@ const routes: Routes = [
   { path: 'vendor/detail/:id', component: VendorDetailComponent},
   { path: 'vendor/edit/:id', component: VendorEditComponent},
   { path: 'vendor/list', component: VendorListComponent},
-  { path: '**', component: HomeComponent },
+  { path: 'loading', component: LoadingScreenComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 
 @NgModule({

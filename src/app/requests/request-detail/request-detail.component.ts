@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { Request } from 'src/model/request.model';
+import { Request } from 'src/app/model/request.model';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-request-detail',
@@ -9,9 +11,19 @@ import { Request } from 'src/model/request.model';
 })
 export class RequestDetailComponent {
 
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(){
+    const user = this.authService.getAuthorizedUser();
+
+    if(!user){
+      this.router.navigate(['user/login']);
+    }
+
+  }
 
 
-  constructor() {}
-
-  ngOnInit() {}
 }

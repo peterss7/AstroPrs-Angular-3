@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { Product } from 'src/model/product.model';
+import { Product } from 'src/app/model/product.model';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -9,7 +11,18 @@ import { Product } from 'src/model/product.model';
 })
 export class ProductDetailComponent {
 
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
-  constructor() {}
-  ngOnInit() {}
+  ngOnInit(){
+    const user = this.authService.getAuthorizedUser();
+
+    if(!user){
+      this.router.navigate(['user/login']);
+    }
+
+  }
+
 }
