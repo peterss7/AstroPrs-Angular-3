@@ -11,21 +11,27 @@ import { UsersModule } from './users/users.module';
 import { VendorsModule } from './vendors/vendors.module';
 import { ProductsModule } from './products/products.module';
 import { RequestsModule } from './requests/requests.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
-import { MenuComponent } from './menu/menu.component';
+
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { MenuComponent } from './menu/menu.component';
+import { SharedModule } from './shared/shared.module';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
     FooterComponent,
     HomeComponent,
-    LoadingScreenComponent
+    PagenotfoundComponent,
+    MenuComponent,
+    AboutComponent
+
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,10 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
     VendorsModule,
     ProductsModule,
     RequestsModule,
-    HttpClientModule
+    HttpClientModule,
+    UsersModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

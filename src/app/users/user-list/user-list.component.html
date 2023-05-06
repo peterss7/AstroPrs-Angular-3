@@ -7,7 +7,7 @@
     <app-list-table *ngIf="!loading" [users]="visibleUsers"></app-list-table>
     <div class="button-group-create-delete">
       <a role="button" class="btn btn-outline-info" href="user/create">Create User</a>
-      <button type="button" class="btn btn-outline-info" href="user/delete">Delete User</button>
+      <button type="button" class="btn btn-outline-info" (click) = "onDeleteUser()">Delete User</button>
     </div>
   </div>
 </div>

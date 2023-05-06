@@ -1,9 +1,10 @@
+import { CurrentUser } from 'src/app/model/currentUser';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { UserService } from './user.service';
-import { CurrentUser } from '../model/currentUser';
 import { Credential } from '../model/credential';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 
 @Injectable({
@@ -11,84 +12,119 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthService {
 
-  @Output()
-  loginEvent = new EventEmitter<CurrentUser>();
+  private isHidden$ = new BehaviorSubject<any>({});
+  selectedIsHidden$ = this.isHidden$.asObservable();
 
-  private currentUser!: CurrentUser;
-  private isAuthenticated: boolean = false;
+
+
+  private userKey = 'user_token';
+  private menuToken = 'menu_token';
+  private currentUser$ = new BehaviorSubject<any>({});
+  selectedCurrentUser$ = this.currentUser$.asObservable();
+
 
 
   constructor(
     private userService: UserService,
-    private router: Router,
-    private cookieService: CookieService
-  ) { }
+    private router: Router
+  ) {}
 
   public authenticate(credentials: Credential): void {
     console.log("authenticating... <== in authService authenticate");
     if (credentials.getUsername() != '' && credentials.getPassword() != '') {
-      console.log(credentials.getUsername() + " | "  + credentials.getPassword() + ": credentials in authenticate authservice is valid input");
-
+      console.log(credentials.getUsername() + " | " + credentials.getPassword() + ": credentials in authenticate authservice is valid input");
 
       this.userService.login(credentials).subscribe(
         cUser => {
-          /*
-          console.log(cUser + " <== in authenticate in authservice, authentication AFTER CREDS SEND AND IN SUBSCRIBE");
-          console.log("stringy: " + JSON.stringify(cUser) + " <== authenticate authservice");
-          this.currentUser = JSON.parse(JSON.stringify(cUser));
-          console.log(this.currentUser + " <== in authenticate in authservice, AFTER STRINGIFY");
-          */
-          this.currentUser = new CurrentUser();
-          this.cookieService.set('currentUser', JSON.stringify(this.currentUser));
-          Object.assign(this.currentUser, cUser);
-          // console.log(this.currentUser + " <== in authenticate in authservice, AFTER OBJECT ASSIGN");
-          if (this.currentUser.getIsAdmin() != null){
-            this.isAuthenticated = true;
-            // console.log("AUTHENTICATION SUCCESSFUL");
-            this.router.navigate(['/home']);
-            this.emitLoginEvent();
-          }
+          const currentUserData = JSON.stringify(cUser);
+          console.log(currentUserData);
+          // this.currentUser = JSON.parse(currentUserData);
+          // console.log(this.currentUser);
+          // this.setCurrentUserToken( JSON.stringify(this.currentUser));
+          this.setCurrentUserToken(currentUserData);
+          this.router.navigate(['/home']);
         },
         error => console.log(error)
       );
     }
   }
 
-  public emitLoginEvent(){
-    console.log("emitting logged in user with id of: " + this.currentUser.getId() + " in emit loginEvent in AuthService");
-    this.loginEvent.emit(this.currentUser);
+  setCurrentUserToken(token: string): void {
+    console.log(token);
+    this.currentUser$.next(token);
+    localStorage.setItem(this.userKey, token);
+    localStorage.removeItem(this.menuToken);
+    localStorage.setItem(this.menuToken, 'true');
+    console.log("visibility set to: " + localStorage.getItem(this.menuToken));
+    this.isHidden$.next(true);
+
+
   }
-  public emitLogoutEvent(){
-    console.log("emitting logout in emit logoutEvent in AuthService");
-    this.loginEvent.emit(this.currentUser);
+
+  getCurrentUserToken(): string | null {
+    return localStorage.getItem(this.userKey);
   }
-
-
-
+  removeCurrentUsertoken(): void {
+    localStorage.removeItem(this.userKey);
+    localStorage.removeItem(this.menuToken);
+    localStorage.setItem(this.menuToken, 'false');
+    console.log("visibility set to: " + localStorage.getItem(this.menuToken));
+    this.isHidden$.next(false);
+    this.currentUser$.next('dead');
+  }
 
 
   public logout(): void {
 
-    this.emitLogoutEvent();
-    this.isAuthenticated = false;
-    this.currentUser.reset();
+    this.removeCurrentUsertoken();
     console.log("LOGGED OUT");
     this.router.navigate(['/home']);
-
   }
 
   public getIsAuthenticated() {
-    return this.isAuthenticated;
+
+    const currentUserData = this.getCurrentUserToken();
+    if (currentUserData != null) {
+      const { id } = JSON.parse(currentUserData);
+      console.log("LOGGED IN USER ID IN GET AUTHENTICAED: " + id);
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
-  public getAuthorizedUser(): CurrentUser {
-    console.log(this.currentUser + " | getting authorized user");
-    const currentUserData = JSON.parse(this.cookieService.get('currentUser'));
-    this.currentUser = new CurrentUser();
-    this.currentUser = Object.assign(this.currentUser, currentUserData);
-    return this.currentUser;
+  public getIsReviewer(): boolean {
 
-    // return this.currentUser;
+      const currentUserData = this.getCurrentUserToken();
+      if (currentUserData != null) {
+        const { isReviewer } = JSON.parse(currentUserData);
+        console.log(isReviewer + " ISREVIEWER? INSIDE authservice GETISreviewer******");
+        if (isReviewer) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+      else {
+        return false;
+      }
+    }
+
+  public getIsAdmin(): boolean {
+    const  currentUserData = this.getCurrentUserToken();
+    if (currentUserData != null){
+      const { isAdmin } = JSON.parse(currentUserData);
+      if (isAdmin){
+        return true;
+      }
+      else{
+        return false;      }
+
+    }
+    else{
+      return false;
+    }
   }
-
 }

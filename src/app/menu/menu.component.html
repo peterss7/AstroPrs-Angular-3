@@ -1,20 +1,26 @@
 <div id="menu-container">
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/home">Astro Prs</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" (click)="devHelper()">Astro Prs</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="centered-links" *ngIf="visible">
+      <div class="centered-links">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
             <li class="nav-item">
               <a class="nav-link active" aria-current="menu" routerLink="/home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="/about">About</a>
             </li>
-            <li class="nav-item dropdown">
+            <!--
+            <li class="nav-item dropdown"  *ngIf="visible">
+            -->
+
+            <li class="nav-item dropdown" *ngIf="visible">
               <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Menu
               </a>
@@ -24,19 +30,20 @@
                 <li><a class="dropdown-item" routerLink="/product/list">Products</a></li>
                 <li><a class="dropdown-item" routerLink="/request/list">Requests</a></li>
                 <li><a class="dropdown-item" routerLink="/reviews/list">Reviews</a></li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li><a class="dropdown-item" (click)="onLogout()">Logout</a></li>
               </ul>
             </li>
+
           </ul>
         </div>
       </div>
       <div class="btn-group" role="group" aria-label="Login and Registration">
-        <a class="btn btn-outline-info" role="button" routerLink="/user/login">Login</a>
+        <a class="btn btn-outline-info" role="button" routerLink="user/login">Login</a>
         <button type="button" class="btn btn-outline-info">Register</button>
       </div>
     </div>
   </nav>
 </div>
-
-

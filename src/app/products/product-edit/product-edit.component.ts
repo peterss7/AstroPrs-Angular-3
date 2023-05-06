@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Product } from 'src/app/model/product.model';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -13,14 +14,12 @@ export class ProductEditComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(){
-    const user = this.authService.getAuthorizedUser();
-
-    if(!user){
-      this.router.navigate(['user/login']);
+    if (!this.cookieService.get('currentUser')){
+      this.router.navigate(['login']);
     }
 
   }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AstroPrs-Angular';
+
+  constructor(
+    private cookieService: CookieService
+  ) {
+    cookieService.delete('currentUser');
+    cookieService.set('loggedIn', JSON.stringify('FALSE'));
+  }
+
+
+
 }

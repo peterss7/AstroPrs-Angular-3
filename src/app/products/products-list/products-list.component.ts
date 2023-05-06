@@ -6,7 +6,8 @@ import { AuthService } from "src/app/service/auth.service";
 
 @Component({
   selector: 'products-list',
-  templateUrl: './products-list.component.html'
+  templateUrl: './products-list.component.html',
+  styleUrls: ['./products-list.component.css']
 })
 
 export class ProductListComponent {
@@ -18,11 +19,6 @@ export class ProductListComponent {
   ) {}
 
   ngOnInit(){
-    const user = this.authService.getAuthorizedUser();
-
-    if(!user){
-      this.router.navigate(['user/login']);
-    }
 
   }
 
