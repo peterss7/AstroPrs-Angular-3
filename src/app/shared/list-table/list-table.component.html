@@ -1,21 +1,27 @@
+<div class="fixed-table-container fixed-height" >
 <table
-  class="table table-sm table-dark table-striped table-bordered border-gray table-hover align-middle">
+  class="table table-sm table-dark table-striped table-bordered border-gray table-hover align-middle" style="min-height: fit-content;"
+  >
+
   <thead>
     <tr>
-      <th scope="col" *ngFor="let header of tableHeaders">{{header}}</th>
+      <th scope="col" *ngFor="let header of tableHeaders"><p>{{header}}</p></th>
+      <th><p>Detail</p></th>
+      <th><p>Edit</p></th>
+      <th data-checkbox="true"><p>Delete</p></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let object of tableObjects">
+    <tr *ngFor="let object of tableObjects; let i = index;" class>
       <ng-container [ngSwitch]="activeObjectType">
         <ng-container *ngSwitchCase="'USER'">
-          <td>{{ object.firstname }}</td>
-          <td>{{ object.lastname }}</td>
-          <td>{{ object.username }}</td>
-          <td>{{ object.phone }}</td>
-          <td>{{ object.email }}</td>
-          <td>{{ object.isReviewer }}</td>
-          <td>{{ object.isAdmin }}</td>
+          <td><p>{{ object.firstname }}</p></td>
+          <td><p>{{ object.lastname }}</p></td>
+          <td><p>{{ object.username }}</p></td>
+          <td><p>{{ object.phone }}</p></td>
+          <td><p>{{ object.email }}</p></td>
+          <td><p>{{ object.isReviewer }}</p></td>
+          <td><p>{{ object.isAdmin }}</p></td>
           <td>
             <a class="icon-link icon-link-hover" href="user/detail/{{object.id}}">
               <i class="bi bi-zoom-in"></i>
@@ -25,6 +31,12 @@
             <a class="icon-link icon-link-hover" href="user/edit/{{object.id}}">
               <i class="bi bi-pencil-square"></i>
             </a>
+          </td>
+          <td class="bs-checkbox " style="width: 36px;">
+            <label>
+              <input name="btSelectItem" type="checkbox" (change)="onCheckboxChange(object.id)">
+              <span></span>
+            </label>
           </td>
         </ng-container>
         <ng-container *ngSwitchCase="'VENDOR'">
@@ -83,6 +95,8 @@
               <i class="bi bi-pencil-square"></i>
             </a>
           </td>
+              <input type="checkbox"/>
+              <label class="form-check-label" for="flexCheckDefault">Delete</label>
         </ng-container>
         <ng-container *ngSwitchCase="'REVIEW'">
           <td>{{ object.description }}</td>
@@ -102,3 +116,4 @@
     </tr>
   </tbody>
 </table>
+</div>

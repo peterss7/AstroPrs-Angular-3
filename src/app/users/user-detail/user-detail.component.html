@@ -61,6 +61,6 @@
   </div>
   <div class="button-group" id="button-group-detail-user">
     <a role="button" class="btn btn-outline-info" href="user/edit/{{user.id}}">Edit User</a>
-    <button type="button" class="btn btn-outline-info" href="user/delete">Delete user</button>
+    <button type="button" class="btn btn-outline-info" (click)="deleteUser(user.id)">Delete user</button>
   </div>
 </div>

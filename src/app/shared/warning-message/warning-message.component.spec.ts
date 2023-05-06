@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoadingScreenComponent } from './loading-screen.component';
+import { WarningMessageComponent } from './warning-message.component';
 
-describe('LoadingScreenComponent', () => {
-  let component: LoadingScreenComponent;
-  let fixture: ComponentFixture<LoadingScreenComponent>;
+describe('WarningMessageComponent', () => {
+  let component: WarningMessageComponent;
+  let fixture: ComponentFixture<WarningMessageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoadingScreenComponent ]
+      declarations: [ WarningMessageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LoadingScreenComponent);
+    fixture = TestBed.createComponent(WarningMessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

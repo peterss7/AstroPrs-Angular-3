@@ -10,4 +10,13 @@ export class User {
     public isReviewer: boolean = false,
     public isAdmin: boolean = false,
   ) {}
+
+
+  public setIsReviewer(isReviewer: boolean){
+    this.isReviewer = isReviewer;
+  }
+  public setIsAdmin(isAdmin: boolean){
+    this.isAdmin = isAdmin;
+  }
+
 }

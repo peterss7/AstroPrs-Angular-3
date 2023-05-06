@@ -5,6 +5,8 @@ import { ProductCreateComponent } from './products/product-create/product-create
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { ProductListComponent } from './products/products-list/products-list.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
 
 import { RequestCreateComponent } from './requests/request-create/request-create.component';
 import { RequestDetailComponent } from './requests/request-detail/request-detail.component';
@@ -23,33 +25,35 @@ import { VendorCreateComponent } from './vendors/vendor-create/vendor-create.com
 import { VendorDetailComponent } from './vendors/vendor-detail/vendor-detail.component';
 import { VendorEditComponent } from './vendors/vendor-edit/vendor-edit.component';
 import { VendorListComponent } from './vendors/vendor-list/vendor-list.component';
-import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guard/authguard.service';
+import { AdminGuard } from './guard/adminguard.service';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent,canActivate: [AuthGuard]},
-  { path: 'product/create', component: ProductCreateComponent, canActivate: [AuthGuard]},
-  { path: 'product/detail/:id', component: ProductDetailComponent},
-  { path: 'product/edit/:id', component: ProductEditComponent},
-  { path: 'product/list', component: ProductListComponent},
-  { path: 'request/create', component: RequestCreateComponent},
-  { path: 'request/detail/:id', component: RequestDetailComponent},
-  { path: 'request/edit/:id', component: RequestEditComponent},
-  { path: 'request/list', component: RequestListComponent},
-  { path: 'request/review', component: RequestReviewComponent},
-  { path: 'request/review-detail/:id', component: ReviewDetailComponent},
-  { path: 'user/create', component: UserCreateComponent},
-  { path: 'user/detail/:id', component: UserDetailComponent},
-  { path: 'user/edit/:id', component: UserEditComponent},
-  { path: 'user/list', component: UserListComponent},
-  { path: 'user/login', component: UserLoginComponent},
-  { path: 'vendor/create', component: VendorCreateComponent},
-  { path: 'vendor/detail/:id', component: VendorDetailComponent},
-  { path: 'vendor/edit/:id', component: VendorEditComponent},
-  { path: 'vendor/list', component: VendorListComponent},
-  { path: 'loading', component: LoadingScreenComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent},
+  { path: 'about', component: AboutComponent},
+  { path: 'product/create', component: ProductCreateComponent, canActivate: [AuthGuard ,AdminGuard]},
+  { path: 'product/detail/:id', component: ProductDetailComponent, canActivate: [AuthGuard]},
+  { path: 'product/edit/:id', component: ProductEditComponent, canActivate: [AuthGuard,AdminGuard]},
+  { path: 'product/list', component: ProductListComponent, canActivate: [AuthGuard]},
+  { path: 'request/create', component: RequestCreateComponent, canActivate: [AuthGuard,AdminGuard]},
+  { path: 'request/detail/:id', component: RequestDetailComponent, canActivate: [AuthGuard]},
+  { path: 'request/edit/:id', component: RequestEditComponent, canActivate: [AuthGuard,AdminGuard]},
+  { path: 'request/list', component: RequestListComponent, canActivate: [AuthGuard]},
+  { path: 'request/review', component: RequestReviewComponent, canActivate: [AuthGuard,AdminGuard]},
+  { path: 'request/review-detail/:id', component: ReviewDetailComponent, canActivate: [AuthGuard]},
+  { path: 'user/create', component: UserCreateComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [AuthGuard]},
+  { path: 'user/edit/:id', component: UserEditComponent, canActivate: [AuthGuard]},
+  { path: 'user/list', component: UserListComponent, canActivate: [AuthGuard]},
+  { path: 'user/login', component: UserLoginComponent},
+  { path: 'vendor/create', component: VendorCreateComponent, canActivate: [AuthGuard]},
+  { path: 'vendor/detail/:id', component: VendorDetailComponent, canActivate: [AuthGuard]},
+  { path: 'vendor/edit/:id', component: VendorEditComponent, canActivate: [AuthGuard]},
+  { path: 'vendor/list', component: VendorListComponent, canActivate: [AuthGuard]},
+  { path: '**', component: PagenotfoundComponent },
 ];
 
 @NgModule({
