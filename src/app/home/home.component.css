@@ -1,0 +1,23 @@
+.home-text-cont{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  padding-bottom: 4%;
+  transform: scale(1, .95);
+}
+
+
+
+p {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2.5%;
+  margin-top: 3%;
+  color: var(--bs-white);
+  background: var(--bs-gradient-blue);
+  transform: scale(1, 1.25);
+  height: 24vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100%;
+}
