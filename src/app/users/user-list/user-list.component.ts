@@ -17,7 +17,7 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class UserListComponent implements OnInit {
 
-  pageTitle: string = "User Detail";
+  pageTitle: string = "User List";
 
   visibleUsers: User[] = [];
   users: User[] = [];

@@ -21,6 +21,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MenuComponent } from './menu/menu.component';
 import { SharedModule } from './shared/shared.module';
 import { AboutComponent } from './about/about.component';
+import { PageUnauthorizedComponent } from './page-unauthorized/page-unauthorized.component';
+import { ReviewListComponent } from './review/review-list/review-list.component';
+import { ReviewerDetailComponent } from './review/reviewer-detail/reviewer-detail.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { AboutComponent } from './about/about.component';
     HomeComponent,
     PagenotfoundComponent,
     MenuComponent,
-    AboutComponent
+    AboutComponent,
+    PageUnauthorizedComponent,
+    ReviewListComponent,
+    ReviewerDetailComponent
 
   ],
   imports: [

@@ -1,0 +1,21 @@
+<div class="card text-white bg-dark mb-3 detail-card-content">
+  <div class="card-body">
+    <h2>{{cardHeader}}</h2>
+    <div class="container-fluid">
+      <form [formGroup]="activeForm" (ngSubmit)="submit()">
+        <ng-container *ngFor="let header of tableHeaders; let i = index">
+          <div class="row" *ngIf="i % 2 === 0">
+            <div class="col-6">
+              <label>{{tableHeaders[i]}}</label>
+              <input type="{{ tableInputTypes[i][0] }}" formControlName="{{ tableDataIds[i]}}" placeholder="{{tableHeaders[i]}}">
+            </div>
+            <div class="col-6">
+              <label>{{tableHeaders[i + 1]}}</label>
+              <input type="{{ tableInputTypes[i + 1][0] }}" formControlName="{{ tableDataIds[i + 1] }}" placeholder="{{tableHeaders[i + 1]}}">
+            </div>
+          </div>
+        </ng-container>
+      </form>
+    </div>
+  </div>
+</div>

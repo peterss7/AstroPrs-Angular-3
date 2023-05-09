@@ -8,13 +8,14 @@ import { RequestLine } from 'src/app/model/request-line.model';
 })
 export class RequestLineService {
 
-  url: string = "http://localhost:8080/RequestLines";
+  url: string = "http://localhost:8080/requestlines";
 
   constructor(private http: HttpClient) { }
 
-  list(): Observable<RequestLine> {
-    return this.http.get(this.url) as Observable<RequestLine>;
+  list(): Observable<RequestLine[]> {
+    return this.http.get(this.url) as Observable<RequestLine[]>;
   }
+
   get(id: number): Observable<RequestLine> {
     return this.http.get(this.url + "/" + id) as Observable<RequestLine>;
   }

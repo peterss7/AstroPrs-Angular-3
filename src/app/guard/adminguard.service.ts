@@ -17,17 +17,34 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): boolean {
 
-    console.log(this.authService.getIsAdmin());
+
+
+    if (localStorage.getItem('dev_token') == 'true'){
+      console.log("devMode active. Access is granted");
+      return true;
+    }
+
+    console.log("Is user an Admin? " + this.authService.getIsAdmin() + "  <==== adminGuard");
+
+
+
 
     const activeGuard =  this.authService.getIsAdmin();
 
-    console.log(activeGuard);
+
+    console.log("Is user an Admin? " + activeGuard  + "  <==== adminGuard");
 
     if(activeGuard){
       return true;
     }
     else{
-      this.router.navigate(['/pagenotfound']);
+      this.router.navigate(['/page-unauthorized']);
+
+      setTimeout(() => {
+        console.log("unauthorized acceess attempt");
+        this.router.navigate(['/home']);
+
+      }, 3500);
 
       return false;
     }

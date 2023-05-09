@@ -1,0 +1,23 @@
+<div class="card text-white bg-dark mb-3 detail-card-content">
+  <div class="card-body">
+    <h5>{{cardHeader}}</h5>
+    <div class="container-fluid">
+      <ng-container *ngFor="let header of tableHeaders; let i = index">
+        <div class="row" *ngIf="i % 2 === 0">
+          <div class="d-flex justify-content-end col">
+            <label>{{tableHeaders[i]}} </label>
+          </div>
+          <div class="d-flex justify-content-start  col" style="align-items: center;">
+            <p>{{object[tableDataIds[i]]}}</p>
+          </div>
+          <div class="d-flex justify-content-end col">
+            <label>{{tableHeaders[i + 1]}} </label>
+          </div>
+          <div class="d-flex justify-content-start  col" style="align-items: center;">
+            <p>{{object[tableDataIds[i + 1]]}}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

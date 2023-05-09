@@ -7,6 +7,22 @@
 }
 
 
+#main-content-container-home{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bs-dark-trans);
+  border-radius: 33%;
+  border: 1px solid var(--bs-yellow);
+}
+
+#main-content-container-home > p {
+  padding: 5%;
+  text-align: center;
+  color: var(--bs-yellow);
+}
+
 
 p {
   padding-left: 10%;

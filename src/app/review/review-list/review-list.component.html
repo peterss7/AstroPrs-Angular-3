@@ -1,0 +1,78 @@
+<div class="page-container">
+  <h1 class="main-header">{{pageTitle}}</h1>
+  <div class="main-content-container">
+    <div class="fixed-table-container fixed-height">
+      <table class="table table-sm table-dark table-striped table-bordered border-gray table-hover align-middle"
+        style="min-height: fit-content;">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let header of tableHeaders">
+              <p>{{header}}</p>
+            </th>
+            <th>
+              <p>Detail</p>
+            </th>
+            <th data-checkbox="true" *ngIf="reviewState==='REVIEWING'">
+              <p>Select</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let object of visibleRequests; let i = index;" class id="test">
+            <td>
+              <p>{{object.id}}</p>
+            </td>
+            <td>
+              <p>{{object.description}}</p>
+            </td>
+            <td>
+              <p>{{object.justification}}</p>
+            </td>
+            <td>
+              <p>{{object.deliveryMode}}</p>
+            </td>
+            <td>
+              <p>{{object.submittedDate}}</p>
+            </td>
+            <td>
+              <p>{{object.dateNeeded}}</p>
+            </td>
+            <td>
+              <p>{{object.status}}</p>
+            </td>
+            <td>
+              <p>{{object.total}}</p>
+            </td>
+            <td>
+              <p>{{object.user.id}}</p>
+            </td>
+            <td>
+              <a class="icon-link icon-link-hover" href="request/review/{{object.id}}">
+                <i class="bi bi-zoom-in"></i>
+              </a>
+            </td>
+            <td class="bs-checkbox " style="width: 36px;" *ngIf="reviewState==='REVIEWING'">
+              <label>
+                <input name="btSelectItem" type="checkbox" (change)="onCheckboxChange(object.id)">
+                <span></span>
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col">
+        <label for="userId">UserId:</label>
+        <input #userIdInput id="userId" type="number">
+        <button type="button" (click)="getById()">Find By User Id</button>
+      </div>
+      <div class="button-group-create-delete" *ngIf="reviewState==='REVIEWING'"
+        style="width: 50%; padding:3%; display:flex; align-items: center; justify-content: center;">
+        <div class="row">
+          <div class="col">
+            <button role="button" class="btn btn-outline-info" (click)="onReview()">REVIEW</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

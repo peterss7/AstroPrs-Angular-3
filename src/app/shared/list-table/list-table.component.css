@@ -2,3 +2,9 @@ p {
   font-size: .95rem;
 
 }
+
+
+
+.table-sm > :not(caption) > * > * {
+  padding: 0rem .08rem;
+}

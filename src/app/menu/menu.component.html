@@ -29,7 +29,7 @@
                 <li><a class="dropdown-item" routerLink="/vendor/list">Vendors</a></li>
                 <li><a class="dropdown-item" routerLink="/product/list">Products</a></li>
                 <li><a class="dropdown-item" routerLink="/request/list">Requests</a></li>
-                <li><a class="dropdown-item" routerLink="/reviews/list">Reviews</a></li>
+                <li><a class="dropdown-item" routerLink="/review/list">Reviews</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
@@ -42,7 +42,7 @@
       </div>
       <div class="btn-group" role="group" aria-label="Login and Registration">
         <a class="btn btn-outline-info" role="button" routerLink="user/login">Login</a>
-        <button type="button" class="btn btn-outline-info">Register</button>
+        <button type="button" class="btn btn-outline-info" (click)="exitDevMode()">Register</button>
       </div>
     </div>
   </nav>

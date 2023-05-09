@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductCreateComponent } from './products/product-create/product-create.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
-import { ProductListComponent } from './products/products-list/products-list.component';
+import { ProductsListComponent } from './products/products-list/products-list.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
@@ -29,6 +29,9 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guard/authguard.service';
 import { AdminGuard } from './guard/adminguard.service';
 import { AboutComponent } from './about/about.component';
+import { PageUnauthorizedComponent } from './page-unauthorized/page-unauthorized.component';
+import { ReviewListComponent } from './review/review-list/review-list.component';
+import { ReviewerDetailComponent } from './review/reviewer-detail/reviewer-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -37,22 +40,25 @@ const routes: Routes = [
   { path: 'product/create', component: ProductCreateComponent, canActivate: [AuthGuard ,AdminGuard]},
   { path: 'product/detail/:id', component: ProductDetailComponent, canActivate: [AuthGuard]},
   { path: 'product/edit/:id', component: ProductEditComponent, canActivate: [AuthGuard,AdminGuard]},
-  { path: 'product/list', component: ProductListComponent, canActivate: [AuthGuard]},
+  { path: 'product/list', component: ProductsListComponent, canActivate: [AuthGuard]},
   { path: 'request/create', component: RequestCreateComponent, canActivate: [AuthGuard,AdminGuard]},
   { path: 'request/detail/:id', component: RequestDetailComponent, canActivate: [AuthGuard]},
   { path: 'request/edit/:id', component: RequestEditComponent, canActivate: [AuthGuard,AdminGuard]},
   { path: 'request/list', component: RequestListComponent, canActivate: [AuthGuard]},
   { path: 'request/review', component: RequestReviewComponent, canActivate: [AuthGuard,AdminGuard]},
   { path: 'request/review-detail/:id', component: ReviewDetailComponent, canActivate: [AuthGuard]},
+  { path: 'review/list', component: ReviewListComponent, canActivate: [AuthGuard]},
+  { path: 'reviewer/detail/:id', component: ReviewerDetailComponent, canActivate: [AuthGuard]},
   { path: 'user/create', component: UserCreateComponent, canActivate: [AuthGuard, AdminGuard]},
-  { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [AuthGuard]},
-  { path: 'user/edit/:id', component: UserEditComponent, canActivate: [AuthGuard]},
-  { path: 'user/list', component: UserListComponent, canActivate: [AuthGuard]},
+  { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [AuthGuard , AdminGuard]},
+  { path: 'user/edit/:id', component: UserEditComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'user/list', component: UserListComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'user/login', component: UserLoginComponent},
   { path: 'vendor/create', component: VendorCreateComponent, canActivate: [AuthGuard]},
   { path: 'vendor/detail/:id', component: VendorDetailComponent, canActivate: [AuthGuard]},
   { path: 'vendor/edit/:id', component: VendorEditComponent, canActivate: [AuthGuard]},
   { path: 'vendor/list', component: VendorListComponent, canActivate: [AuthGuard]},
+  { path: 'page-unauthorized', component: PageUnauthorizedComponent},
   { path: '**', component: PagenotfoundComponent },
 ];
 

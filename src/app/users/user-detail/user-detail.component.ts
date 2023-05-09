@@ -23,7 +23,10 @@ export class UserDetailComponent {
   ngOnInit() {
 
     this.route.params.subscribe(parms => this.id = parms['id']);
+    console.log("user search id: " + this.id);
     this.userService.get(this.id).subscribe(u => this.user = u as User);
+
+    console.log("user on detail: " + JSON.stringify(this.user));
   }
 
   deleteUser(id: number){

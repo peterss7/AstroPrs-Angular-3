@@ -19,4 +19,6 @@ export class User {
     this.isAdmin = isAdmin;
   }
 
+
+
 }

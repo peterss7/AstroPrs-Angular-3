@@ -32,15 +32,6 @@ export class UserService {
     return this.http.get(this.url + "/" + id) as Observable<User>;
   }
 
-  /*
-  save(user: User): Observable<User> {
-    console.log("saving user");
-    console.log("user sent to saved: " + user);
-    console.log("user sent to saved: " + JSON.stringify(user));
-    return this.http.post(this.url, user) as Observable<User>;
-  }
-  */
-
   createUser(user: User): void {
     console.log("saving user");
     console.log("user sent to saved: " + user);
@@ -69,69 +60,33 @@ export class UserService {
   }
 
   validate(user: string): Observable<string> {
-    console.log(JSON.stringify(user) + "sdfsdfsdf");
+    console.log(JSON.stringify(user) + " user as string in validation method");
     const stringyUser = JSON.stringify(user);
     return this.http.get(this.url + "/" + "validate" + user) as Observable<string>;
 
   }
 
-  update(user: User): Observable<User> {
-    return this.http.put(this.url, User) as Observable<User>;
+  update(user: User): Observable<any> {
+
+    const url = this.url + "/" + user.id;
+    return this.http.put(url, JSON.stringify(user), httpOptions).pipe(
+      map(response => response),
+      catchError(error => {
+        throw new Error(error);
+      })
+    );
   }
+
   deleteUserById(id: number): void {
 
-    var idTest: number = 0;
-
-    this.route.params.subscribe(parms => idTest = parms['id']);
-
-
-    console.log("attempting to delete at index: " + id);
-    console.log("URL: " + JSON.stringify(this.url + "/" + id));
-    const deleteUrl = this.url + "/" + id;
-    // console.log(deleteUrl);
-    // return this.http.delete(this.url + "/" + id);
-
-    const url = window.location.href;
-    const urlComponents = url.split('/');
-
-    console.log(urlComponents[3]);
-
-    var originalUrl: string;
-
-    if (urlComponents[4] == 'list'){
-      originalUrl = this.router.url;
-    }
-    else{
-      originalUrl = '/user/list';
-    }
-
-    console.log(urlComponents[3]);
-
-
-
-    if (urlComponents[3] === 'user') {
-
-      this.http.delete(deleteUrl).subscribe(() => {
-        console.log("DELETION SUCCESSFUL");
-        console.log(this.router.url);
-        var nextUrl = this.router.url;
-        console.log(this.router.parseUrl(this.router.url));
-
-
-        this.router.navigate(['/pagenotfounddelete']);
-
-        setTimeout(() => {
-          // window.history.back();
-          console.log('/' + nextUrl);
-          this.router.navigate(['/' + originalUrl]);
-          console.log(originalUrl);
-        }, 500);
-
-
-      }, (error) => {
-        console.log("DELETION FAILED");
-      });
-    }
+    this.http.delete(this.url + "/" + id).subscribe(() => {
+      this.router.navigate(['/pagenotfound']);
+      setTimeout(() => {
+        this.router.navigate(['/user/list']);
+      }, 500);
+    }, (error) => {
+      console.log("DELETION FAILED");
+    });
   }
 }
 

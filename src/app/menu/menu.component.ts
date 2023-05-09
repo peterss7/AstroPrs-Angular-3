@@ -16,16 +16,21 @@ import { filter } from 'rxjs/operators';
 export class MenuComponent implements OnInit {
 
 
-  visible: any;
+  visible!: boolean;
 
   constructor(
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+    this.visible = false;
+  }
 
 
 
   ngOnInit(): void {
+
+    this.visible = false;
+
     this.authService.selectedIsHidden$.subscribe((authHidden) => {
       this.visible = authHidden;
     })
@@ -36,8 +41,16 @@ export class MenuComponent implements OnInit {
   }
 
   devHelper(): void {
+    this.authService.enterDevMode();
     console.log(this.authService.getIsAuthenticated());
-    console.log(this.visible);
+    console.log("user token from auth service(do i still care?): " + JSON.parse(this.authService.getCurrentUserToken() + ''));
+    console.log("Menu visibility: " + this.visible);
+    console.log("User isAdmin: " + this.authService.getIsReviewer());
+    console.log("User isReviewer: " + this.authService.getIsAdmin());
+  }
+
+  exitDevMode(): void {
+    this.authService.exitDevMode();
   }
 
 }

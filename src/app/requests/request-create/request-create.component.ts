@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormCreateComponent } from 'src/app/shared/create/form-create/form-create.component';
 
 @Component({
   selector: 'app-request-create',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RequestCreateComponent {
 
-  deliveryModes = ['Courier', 'Standard Shipping', 'Express Shipping', 'In-Person Pickup', 'Digital', 'White-Glove', 'Freight'];
+  @ViewChild('createForm') createForm!: FormCreateComponent;
 
   constructor(
     private router: Router
@@ -19,15 +20,8 @@ export class RequestCreateComponent {
 
   }
 
-  getNumbers(n: number): number[] {
-    return Array.from({length: n}, (_, i) => i);
-  }
-
-  getDeliveryMode(index: number): string{
-
-    console.log(this.deliveryModes[index]);
-
-    return this.deliveryModes[index];
+  onCreate() {
+    this.createForm.submit();
   }
 
 

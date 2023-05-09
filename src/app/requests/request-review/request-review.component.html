@@ -1,110 +1,85 @@
-<div class="main-container">
-  <table class="list-table table table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Id</th>
-        <th scope="col">Description</th>
-        <th scope="col">Justification</th>
-        <th scope="col">Submitted Date</th>
-        <th scope="col">Date Needed</th>
-        <th scope="col">Delivery Date</th>
-        <th scope="col">Delivery Mode</th>
-        <th scope="col">Status</th>
-        <th scope="col">Total</th>
-        <th scope="col">Detail</th>
-        <th scope="col">Edit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>request id 1</td>
-        <td>request description 1</td>
-        <td>request justification 1</td>
-        <td>request submitted date 1</td>
-        <td>request date needed 1</td>
-        <td>request delivery date 1</td>
-        <td>request delivery mode 1</td>
-        <td>request status 1</td>
-        <td>request total 1</td>
-        <td>
-          <a class="icon-link icon-link-hover" href="#">
-            <i class="bi bi-zoom-in"></i>
-          </a>
-        </td>
-        <td>
-          <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="#">
-            <i class="bi bi-pencil-square"></i>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>request id 2</td>
-        <td>request description 2</td>
-        <td>request justification 2</td>
-        <td>request submitted date 2</td>
-        <td>request date needed 2</td>
-        <td>request delivery date 2</td>
-        <td>request delivery mode 2</td>
-        <td>request status 2</td>
-        <td>request total 2</td>
-        <td>
-          <a class="icon-link icon-link-hover" href="#">
-            <i class="bi bi-zoom-in"></i>
-          </a>
-        </td>
-        <td>
-          <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="#">
-            <i class="bi bi-pencil-square"></i>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>request id 3</td>
-        <td>request description 3</td>
-        <td>request justification 3</td>
-        <td>request submitted date 3</td>
-        <td>request date needed 3</td>
-        <td>request delivery date 3</td>
-        <td>request delivery mode 3</td>
-        <td>request status 3</td>
-        <td>request total 3</td>
-        <td>
-          <a class="icon-link icon-link-hover" href="#">
-            <i class="bi bi-zoom-in"></i>
-          </a>
-        </td>
-        <td>
-          <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="#">
-            <i class="bi bi-pencil-square"></i>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>request id 4</td>
-        <td>request description 4</td>
-        <td>request justification 4</td>
-        <td>request submitted date 4</td>
-        <td>request date needed 4</td>
-        <td>request delivery date 4</td>
-        <td>request delivery mode 4</td>
-        <td>request status 4</td>
-        <td>request total 4</td>
-        <td>
-          <a class="icon-link icon-link-hover" href="#">
-            <i class="bi bi-zoom-in"></i>
-          </a>
-        </td>
-        <td>
-          <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="#">
-            <i class="bi bi-pencil-square"></i>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="page-container">
+  <h1 class="main-header">{{pageTitle}}</h1>
+  <div class="main-content-container">
+    <div class="fixed-table-container fixed-height">
+      <table class="table table-sm table-dark table-striped table-bordered border-gray table-hover align-middle"
+        style="min-height: fit-content;">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let header of tableHeaders">
+              <p>{{header}}</p>
+            </th>
+            <th>
+              <p>Detail</p>
+            </th>
+            <th data-checkbox="true" *ngIf="reviewState==='REVIEWING'">
+              <p>Select</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let object of visibleRequests; let i = index;" class id="test">
+            <td>
+              <p>{{object.id}}</p>
+            </td>
+            <td>
+              <p>{{object.description}}</p>
+            </td>
+            <td>
+              <p>{{object.justification}}</p>
+            </td>
+            <td>
+              <p>{{object.deliveryMode}}</p>
+            </td>
+            <td>
+              <p>{{object.submittedDate}}</p>
+            </td>
+            <td>
+              <p>{{object.dateNeeded}}</p>
+            </td>
+            <td>
+              <p>{{object.status}}</p>
+            </td>
+            <td>
+              <p>{{object.total}}</p>
+            </td>
+            <td>
+              <p>{{object.user.id}}</p>
+            </td>
+            <td>
+              <a class="icon-link icon-link-hover" href="request/review/{{object.id}}">
+                <i class="bi bi-zoom-in"></i>
+              </a>
+            </td>
+            <td class="bs-checkbox " style="width: 36px;" *ngIf="reviewState==='REVIEWING'">
+              <label>
+                <input name="btSelectItem" type="checkbox" (change)="onCheckboxChange(object.id)">
+                <span></span>
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col">
+        <label for="userId">UserId:</label>
+        <input #userIdInput id="userId" type="number">
+        <button type="button" (click)="getById()">Find By User Id</button>
+      </div>
+      <div class="button-group-create-delete" *ngIf="reviewState==='REVIEWING'"
+        style="width: 50%; padding:3%; display:flex; align-items: center; justify-content: center;">
+        <div class="row">
+          <div class="col">
+            <button role="button" class="btn btn-outline-info" (click)="onApprove()">APPROVE</button>
+            <button type="button" class="btn btn-outline-info" (click)="onGetRejection()">REJECT</button>
+          </div>
+          <div class="row" *ngIf="getRejectionReason==='GETTING'">
+            <label for="rejection">{{getRejectionReason}}:</label>
+            <input #rejectionInput id="rejection" type="text">
+            <button type="button" (click)="onReject()">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

@@ -1,43 +1,10 @@
 <div class="page-container">
-  <h1 class="main-header">Product List</h1>
-  <table id="table-list-product" class="table table-dark table-striped table-bordered border-gray table-hover align-middle">
-    <thead>
-      <tr>
-        <th scope="col">Part Number</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Unit</th>
-        <th scope="col">Photo</th>
-        <th scope="col">Vendor Name</th>
-        <th scope="col">Detail</th>
-        <th scope="col">Edit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!--
-      <tr *ngFor="let product of products">
-        <td>{{ product.partNumber }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ product.unit }}</td>
-        <td>{{ product.photopath }}</td>
-        <td>{{ product.vendor.name }}</td>
-        <td>
-          <a class="icon-link icon-link-hover" href="product/detail/{{product.id}}">
-            <i class="bi bi-zoom-in"></i>
-          </a>
-        </td>
-        <td>
-          <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="product/edit/{{product.id}}">
-            <i class="bi bi-pencil-square"></i>
-          </a>
-        </td>
-      </tr>
-      -->
-    </tbody>
-  </table>
-  <div class="button-group-create-delete">
-    <a role="button" class="btn btn-outline-info" href="product/create">Create Product</a>
-    <button type="button" class="btn btn-outline-info" href="product/delete">Delete Product</button>
+  <h1 class="main-header">{{pageTitle}}</h1>
+  <div class="main-content-container">
+    <app-list-table *ngIf="!loading" [products]="visibleProducts" id="product-list-table"></app-list-table>
+    <div class="button-group-create-delete">
+      <a role="button" class="btn btn-outline-info" href="product/create">Create Product</a>
+      <button type="button" class="btn btn-outline-info" (click)="delete()">Delete Product</button>
+    </div>
   </div>
 </div>

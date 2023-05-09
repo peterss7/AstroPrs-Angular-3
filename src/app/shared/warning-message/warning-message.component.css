@@ -1,0 +1,7 @@
+#warning {
+  grid-row: 20/40;
+  grid-column: 20/80;
+  z-index: 10;
+  border: 3px solid var(--bs-danger);
+  background: var(--bs-danger);
+}

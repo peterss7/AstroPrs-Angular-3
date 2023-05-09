@@ -1,7 +1,7 @@
 <div class="page-container">
   <h1 class="main-header">User Detail</h1>
-  <div class="card-detail-container" id="card-detail-user">
-    <div class="card text-white bg-dark mb-3" style="width: 75rem;">
+  <div class="main-content-container">
+    <div class="card text-white bg-dark mb-3">
       <div class="card-body">
         <h5>{{user.lastname}}, {{user.firstname}}</h5>
         <div class="container-fluid">
@@ -43,13 +43,15 @@
           </div>
           <div class="row detail-check">
             <div class="form-check">
-              <input class="form-check-input check-style" type="checkbox" [checked]="user.isAdmin" value="" id="adminCheck" disabled>
+              <input class="form-check-input check-style" type="checkbox" [checked]="user.isAdmin" value=""
+                id="adminCheck" disabled>
               <label class="form-check-label check-label" for="adminCheck">
                 Admin
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input check-style" type="checkbox" [checked]="user.isReviewer" value="" id="reviwerCheck" disabled>
+              <input class="form-check-input check-style" type="checkbox" [checked]="user.isReviewer" value=""
+                id="reviwerCheck" disabled>
               <label class="form-check-label check-label" for="reviewerCheck">
                 Reviewer
               </label>

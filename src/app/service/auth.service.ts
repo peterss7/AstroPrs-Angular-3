@@ -15,10 +15,13 @@ export class AuthService {
   private isHidden$ = new BehaviorSubject<any>({});
   selectedIsHidden$ = this.isHidden$.asObservable();
 
+  private isDevMode$ = new BehaviorSubject<any>({});
+  selectedIsDevMode$ = this.isDevMode$.asObservable();
 
 
   private userKey = 'user_token';
   private menuToken = 'menu_token';
+  private devToken = 'dev_token'
   private currentUser$ = new BehaviorSubject<any>({});
   selectedCurrentUser$ = this.currentUser$.asObservable();
 
@@ -37,7 +40,7 @@ export class AuthService {
       this.userService.login(credentials).subscribe(
         cUser => {
           const currentUserData = JSON.stringify(cUser);
-          console.log(currentUserData);
+          console.log("returned user data from good login service: " + currentUserData + " <==aduthenticate > userLogin");
           // this.currentUser = JSON.parse(currentUserData);
           // console.log(this.currentUser);
           // this.setCurrentUserToken( JSON.stringify(this.currentUser));
@@ -73,6 +76,23 @@ export class AuthService {
     this.currentUser$.next('dead');
   }
 
+  public enterDevMode(): void{  // this will grant all permissions to current user to make my life with testing stuff easier
+    this.isDevMode$.next(true);
+    localStorage.setItem(this.devToken, 'true');
+    console.log("entering DevMode");
+  }
+
+  public exitDevMode(): void {
+    this.isDevMode$.next(false);
+    localStorage.setItem(this.devToken, 'false');
+    console.log("exiting devMode");
+  }
+
+  public getIsDevMode(): any {
+
+
+    return this.isDevMode$;
+  }
 
   public logout(): void {
 
@@ -81,7 +101,7 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  public getIsAuthenticated() {
+  public getIsAuthenticated(): boolean {
 
     const currentUserData = this.getCurrentUserToken();
     if (currentUserData != null) {
@@ -114,8 +134,11 @@ export class AuthService {
 
   public getIsAdmin(): boolean {
     const  currentUserData = this.getCurrentUserToken();
+    console.log("current user data in auth service getisadmin: " + currentUserData);
     if (currentUserData != null){
+
       const { isAdmin } = JSON.parse(currentUserData);
+      console.log("current user isadmin? in auth service getisadmin: " + isAdmin);
       if (isAdmin){
         return true;
       }

@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/model/user.model';
-import { AuthService } from 'src/app/service/auth.service';
+import { FormCreateComponent } from 'src/app/shared/create/form-create/form-create.component';
 
 
 @Component({
@@ -12,20 +11,17 @@ import { AuthService } from 'src/app/service/auth.service';
 export class ProductCreateComponent {
 
 
-
+  @ViewChild('createForm') createForm!: FormCreateComponent;
 
   constructor(
     private router: Router,
-    private authService: AuthService
-  ) {}
+  ) { }
 
-  ngOnInit(){
-    this.authService.selectedCurrentUser$.subscribe((authUser) => {
-      console.log(authUser);
-    });
+  ngOnInit() {
 
-
-
+  }
+  onCreate() {
+    this.createForm.submit();
   }
 
 }

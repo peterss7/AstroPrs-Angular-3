@@ -1,90 +1,14 @@
 <div class="page-container">
- <!--
   <h1 class="main-header">Request Detail</h1>
-  <div class="card-detail-container card-detail">
-    <div class="card text-white bg-dark mb-3" style="width: 75rem;">
-      <div class="card-body">
-        <h5>{{request.description}}</h5>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="d-flex justify-content-end col">
-              <label for="requestSubmittedDate">Submitted Date:</label>
-            </div>
-            <div class="d-flex justify-content-start  col" style="align-items: center;">
-              {{request.submittedDate}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-end col">
-              <label for="requestDateNeeded">Date Needed:</label>
-            </div>
-            <div class="d-flex justify-content-start col" style="align-items: center;">
-              {{request.dateNeeded}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-end col">
-              <label for="requestDescription">***USERNAME***:</label>
-            </div>
-            <div class="d-flex justify-content-start  col" style="align-items: center;">
-              {{request.userId}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-end col ">
-              <label for="requestDescription">Description:</label>
-            </div>
-            <div class="d-flex justify-content-start  col" style="align-items: center;">
-              {{request.description}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-end col ">
-              <label for="requestDescription">Justification:</label>
-            </div>
-            <div class="d-flex justify-content-start  col" style="align-items: center;">
-              {{request.justification}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-end col ">
-              <label for="requestDescription">Delivery Mode: </label>
-            </div>
-            <div class="d-flex justify-content-start  col" style="align-items: center;">
-              {{request.deliveryMode}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-end col ">
-              <label for="requestDescription">Status:</label>
-            </div>
-            <div class="d-flex justify-content-start  col" style="align-items: center;">
-              {{request.status}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-end col ">
-              <label for="requestDescription">Rejection Reason</label>
-            </div>
-            <div class="d-flex justify-content-start  col" style="align-items: center;">
-              {{request.rejectionReason}}
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="d-flex justify-content-end col ">
-            <label for="requestDescription">***LINE ITEMS***</label>
-          </div>
-          <div class="d-flex justify-content-start  col" style="align-items: center;">
-            ***LINE ITEMS***
-          </div>
-        </div>
+  <div class="request-detail-container">
+    <div class="row">
+      <div class="col">
+        <app-detail-card style="height: 75%" [request]="request"></app-detail-card>
+        <app-detail-buttons [id]="id" [url]="url"></app-detail-buttons>
+      </div>
+      <div class="col request-line-container">
+        <app-list-table [requestlines]="visibleList" [isRequestLines]="isRequestLines"></app-list-table>
       </div>
     </div>
   </div>
-  <div class="button-group button-group-detail">
-    <a role="button" class="btn btn-outline-info" href="request/edit/{{request.id}}">Edit Request</a>
-    <button type="button" class="btn btn-outline-info" href="request/delete">Delete Request</button>
-  </div>
-  -->
 </div>
